@@ -1,14 +1,14 @@
 package com.netcracker.backend.repository;
 
-import com.netcracker.backend.entity.Account;
+import com.netcracker.backend.entity.AccountsEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Long> {
+public interface AccountRepository extends CrudRepository<AccountsEntity, Long> {
 
-    Optional<Account> findAccountByLogin(String login);
+    Optional<AccountsEntity> findAccountByLogin(String login);
 
 }

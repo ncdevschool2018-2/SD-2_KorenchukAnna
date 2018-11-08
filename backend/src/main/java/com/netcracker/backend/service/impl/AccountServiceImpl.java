@@ -1,6 +1,6 @@
 package com.netcracker.backend.service.impl;
 
-import com.netcracker.backend.entity.Account;
+import com.netcracker.backend.entity.AccountsEntity;
 import com.netcracker.backend.repository.AccountRepository;
 import com.netcracker.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +20,29 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-    public Account createAccount(Account user) {
-        Account account = accountRepository.save(user);
+    public AccountsEntity createAccount(AccountsEntity user) {
+        AccountsEntity account = accountRepository.save(user);
         return account;
     }
 
 
-    public Iterable<Account> getAllAccounts() {
-        Iterable<Account> accounts = accountRepository.findAll();
+    public Iterable<AccountsEntity> getAllAccounts() {
+        Iterable<AccountsEntity> accounts = accountRepository.findAll();
         return accounts;
     }
 
-    public Optional<Account> getAccountById(long id) {
-        Optional<Account> account = accountRepository.findById(id);
+    public Optional<AccountsEntity> getAccountById(long id) {
+        Optional<AccountsEntity> account = accountRepository.findById(id);
         return account;
     }
 
     @Override
-    public Optional<Account> getAccountByLogin(String login) {
-        Optional<Account> account = accountRepository.findAccountByLogin(login);
+    public Optional<AccountsEntity> getAccountByLogin(String login) {
+        Optional<AccountsEntity> account = accountRepository.findAccountByLogin(login);
         return account;
     }
 
-    public Account updateAccount(Account user) {
+    public AccountsEntity updateAccount(AccountsEntity user) {
         return null;
     }
 

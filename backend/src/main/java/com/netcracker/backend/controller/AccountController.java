@@ -1,6 +1,6 @@
 package com.netcracker.backend.controller;
 
-import com.netcracker.backend.entity.Account;
+import com.netcracker.backend.entity.AccountsEntity;
 import com.netcracker.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,23 +21,23 @@ public class AccountController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Account createAccount(@RequestBody Account account) {
+    public AccountsEntity createAccount(@RequestBody AccountsEntity account) {
         return  accountService.createAccount(account);
     }
 
-    /*@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Account> getAccountById(@PathVariable long id) {
-        Optional<Account> account = accountService.getAccountById(id);
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    public ResponseEntity<AccountsEntity> getAccountById(@PathVariable long id) {
+        Optional<AccountsEntity> account = accountService.getAccountById(id);
         if(account.isPresent())
             return ResponseEntity.ok().body(account.get());
         else
             return ResponseEntity.noContent().build();
 
-    }*/
+    }
 
-    @RequestMapping(value = "/{login}", method = RequestMethod.GET)
-    public ResponseEntity<Account> getAccountByLogin(@PathVariable(name = "login") String login) {
-        Optional<Account> account = accountService.getAccountByLogin(login);
+    @RequestMapping(value = "/login/{login}", method = RequestMethod.GET)
+    public ResponseEntity<AccountsEntity> getAccountByLogin(@PathVariable(name = "login") String login) {
+        Optional<AccountsEntity> account = accountService.getAccountByLogin(login);
         if(account.isPresent())
             return ResponseEntity.ok().body(account.get());
         else
@@ -46,7 +46,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Iterable<Account> getAllAcounts() {
+    public Iterable<AccountsEntity> getAllAcounts() {
         return accountService.getAllAccounts();
     }
 
