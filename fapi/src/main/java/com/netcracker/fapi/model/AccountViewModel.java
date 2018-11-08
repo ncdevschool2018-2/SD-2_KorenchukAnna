@@ -8,18 +8,17 @@ public class AccountViewModel {
     private Long id;
     private String login;
     private String password;
-    private String roleId;
+    private RoleViewModel role;
 
     public AccountViewModel() {
     }
 
-    public AccountViewModel(Long id, String login, String password, String roleId) {
+    public AccountViewModel(Long id, String login, String password, RoleViewModel role) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.roleId = roleId;
+        this.role = role;
     }
-
 
 
     public long getId() {
@@ -46,12 +45,13 @@ public class AccountViewModel {
         this.password = password;
     }
 
-    public String getRoleId() {
-        return roleId;
+
+    public RoleViewModel getRole() {
+        return role;
     }
 
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
+    public void setRole(RoleViewModel role) {
+        this.role = role;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class AccountViewModel {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", roleId='" + roleId + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

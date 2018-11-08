@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -20,15 +19,15 @@ public class AccountDataServiceImpl implements AccountDataService {
     @Override
     public List<AccountViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        AccountViewModel[] accounts = restTemplate.getForObject(backendServerUrl + "/backend/account",AccountViewModel[].class);
-        return accounts == null  ? Collections.emptyList() :Arrays.asList(accounts);
+        AccountViewModel[] accounts = restTemplate.getForObject(backendServerUrl + "/backend/account/",AccountViewModel[].class);
+        return Arrays.asList(accounts);
     }
 
 
     @Override
     public AccountViewModel getAccountByLogin(String login) {
         RestTemplate restTemplate = new RestTemplate();
-        AccountViewModel account = restTemplate.getForObject(backendServerUrl + "/backend/account/"+login,AccountViewModel.class);
+        AccountViewModel account = restTemplate.getForObject(backendServerUrl + "/backend/account/login/"+login,AccountViewModel.class);
         return account;
     }
 
@@ -36,7 +35,6 @@ public class AccountDataServiceImpl implements AccountDataService {
     public AccountViewModel createAccount(AccountViewModel account) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/backend/account", account, AccountViewModel.class).getBody();
-
     }
 
     @Override
