@@ -1,0 +1,141 @@
+<div class="container">
+<div class="card" >
+  <div class="card-header">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active"><a href="#">{{task.projectCode}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{task.taskCode}}</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+
+      <div class="container ">
+    <div class="row">
+      <div class="col-sm-1">
+        <button class="btn btn-info" type="button"> <i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+      </div>
+      <div class="col-sm-2">
+          <button class="btn btn-info"  type="button"><i class="fa fa-user-o" aria-hidden="true"></i> Assign</button>
+      </div>
+      <div class="col-sm-7">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-info active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Start
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Resolve
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="option3" autocomplete="off"> Ready for test
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="option4" autocomplete="off"> Reopen
+          </label>
+          <label class="btn btn-info">
+            <input type="radio" name="options" id="option5" autocomplete="off"> Close
+          </label>
+        </div>
+    </div>
+    </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-sm-7">
+            <form class="form-horizontal" role="form">
+              <p class="line">  Details  </p>
+              <div class="form-group row">
+                <label  class="col-sm-3 col-form-label">Taskname: </label>
+                <div class="col-sm-9">
+                  <p  class="form-control-plaintext">{{task.taskname}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-3 col-form-label">Priority: </label>
+                <div class="col-sm-9">
+                  <p  class="form-control-plaintext"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgTZW6BcHfxGvaI5aEYWnsr8LoEPVdjVjncWbgvLBqyWlqmogZ" alt="Girl in a jacket" style="width:10px;height:10px;">  {{task.priority.priority}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-3 col-form-label">Status: </label>
+                <div class="col-sm-9">
+                  <p  class="form-control-plaintext">{{task.status.status}}</p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-5">
+            <form class="form-horizontal" role="form">
+              <p class="line">  People  </p>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Reporter:</label>
+                <div class="col-sm-8">
+                  <p  class="form-control-plaintext">{{task.reporter.name}} {{task.reporter.surname}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Assignee:</label>
+                <div class="col-sm-8">
+                  <p  class="form-control-plaintext">{{task.assignee.name}} {{task.assignee.surname}}</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <form class="form-horizontal" role="form">
+              <p class="line">  Description </p>
+              <div class="form-group row">
+                <div class="form-group col-sm-12">
+                  <textarea class="form-control"  rows="7" readonly >{{task.description}}</textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <form class="form-horizontal" role="form">
+              <p class="line">  Dates  </p>
+              <div class="form-group row">
+                <label  class="col-sm-5 col-form-label">Created :</label>
+                <div class="col-sm-7">
+                  <p  class="form-control-plaintext">{{task.created}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-5 col-form-label">Updated :</label>
+                <div class="col-sm-7">
+                  <p  class="form-control-plaintext">{{task.updated}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-5 col-form-label">Closed :</label>
+                <div class="col-sm-7">
+                  <p  class="form-control-plaintext">{{task.dueDate}}</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="line"> Attachments </p><br><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="line"> Comments  </p>
+          </div>
+        </div>
+
+      <comments></comments>
+
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
