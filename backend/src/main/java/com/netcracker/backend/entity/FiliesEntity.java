@@ -6,17 +6,17 @@ import java.util.Objects;
 @Entity
 @Table(name = "filies", schema = "management", catalog = "")
 public class FiliesEntity {
-    private int id;
+    private long id;
     private String fileName;
     private String taskCode;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

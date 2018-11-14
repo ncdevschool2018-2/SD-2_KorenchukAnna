@@ -6,18 +6,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "accounts", schema = "management", catalog = "")
 public class AccountsEntity {
-    private int id;
+    private long id;
     private String login;
     private String password;
     private RolesEntity role;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

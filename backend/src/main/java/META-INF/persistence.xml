@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.netcracker.backend.entity.UsersEntity</class>
+        <class>com.netcracker.backend.entity.CommentsEntity</class>
+        <class>com.netcracker.backend.entity.DatesEntity</class>
+        <class>com.netcracker.backend.entity.PrioritiesEntity</class>
+        <class>com.netcracker.backend.entity.ProjectsEntity</class>
+        <class>com.netcracker.backend.entity.RolesEntity</class>
+        <class>com.netcracker.backend.entity.StatusEntity</class>
+        <class>com.netcracker.backend.entity.TasksEntity</class>
+        <class>com.netcracker.backend.entity.FiliesEntity</class>
+        <class>com.netcracker.backend.entity.AccountsEntity</class>
+        <class>com.netcracker.backend.hhhh.RolesEntity</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/management"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

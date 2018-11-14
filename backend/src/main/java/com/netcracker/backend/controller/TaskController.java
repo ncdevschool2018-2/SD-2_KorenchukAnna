@@ -4,10 +4,7 @@ import com.netcracker.backend.entity.TasksEntity;
 import com.netcracker.backend.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -39,5 +36,10 @@ public class TaskController {
     @RequestMapping(value = "/count/{projectCode}", method = RequestMethod.GET)
     public ResponseEntity<Long> getCountOfTaskByProjectCode(@PathVariable(name = "projectCode") String projectCode){
         return  ResponseEntity.ok().body(taskService.countOfTaskByProjectCode(projectCode));
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public TasksEntity createTask(@RequestBody TasksEntity task) {
+        return  taskService.createTask(task);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tasks", schema = "management", catalog = "")
 public class TasksEntity {
-    private int id;
+    private long id;
     private String taskname;
     private String description;
     private String taskCode;
@@ -23,11 +23,11 @@ public class TasksEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

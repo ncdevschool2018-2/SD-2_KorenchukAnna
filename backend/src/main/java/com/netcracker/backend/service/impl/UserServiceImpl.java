@@ -31,13 +31,17 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-
-
+    @Override
+    public Optional<UsersEntity> getUserByAccountId(long accountId) {
+        Optional<UsersEntity> user = userRepository.getUsersEntitiesByAccountId(accountId);
+        return user;
+    }
 
 
     @Override
-    public UsersEntity createUser(UsersEntity user) {
-        return null;
+    public UsersEntity createUser(UsersEntity us) {
+        UsersEntity user = userRepository.save(us);
+        return user;
     }
 
     @Override

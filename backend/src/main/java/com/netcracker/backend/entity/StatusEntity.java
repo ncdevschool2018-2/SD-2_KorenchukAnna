@@ -6,16 +6,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "status", schema = "management", catalog = "")
 public class StatusEntity {
-    private int id;
+    private long id;
     private String status;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

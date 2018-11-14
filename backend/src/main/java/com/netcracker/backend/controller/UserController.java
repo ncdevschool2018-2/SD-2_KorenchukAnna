@@ -4,10 +4,7 @@ import com.netcracker.backend.entity.UsersEntity;
 import com.netcracker.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -22,9 +19,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
     public ResponseEntity<UsersEntity> getUserById(@PathVariable(name = "id") long id) {
         Optional<UsersEntity> user = userService.getUserById(id);
+        if(user.isPresent())
+            return ResponseEntity.ok().body(user.get());
+        else
+            return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/accountId/{accountId}", method = RequestMethod.GET)
+    public ResponseEntity<UsersEntity> getUserByAccountId(@PathVariable(name = "accountId") long accountId) {
+        Optional<UsersEntity> user = userService.getUserByAccountId(accountId);
         if(user.isPresent())
             return ResponseEntity.ok().body(user.get());
         else
@@ -34,6 +40,11 @@ public class UserController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<UsersEntity> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public UsersEntity createUser(@RequestBody UsersEntity account) {
+        return  userService.createUser(account);
     }
 
 }

@@ -6,18 +6,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "comments", schema = "management", catalog = "")
 public class CommentsEntity {
-    private int id;
+    private long id;
     private String comment;
     private String taskCode;
     private UsersEntity author;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

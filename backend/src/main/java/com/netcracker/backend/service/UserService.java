@@ -8,6 +8,7 @@ public interface UserService {
     UsersEntity createUser(UsersEntity user);
     Iterable<UsersEntity> getAllUsers();
     Optional<UsersEntity> getUserById(long id);
+    Optional<UsersEntity> getUserByAccountId(long id);
     UsersEntity updateAccount(UsersEntity user);
     void deleteUser(long id);
 
