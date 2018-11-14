@@ -4,10 +4,7 @@ import com.netcracker.fapi.model.UserViewModel;
 import com.netcracker.fapi.service.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class UserDataController {
     private UserDataService userDataService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<UserViewModel>> getAllTasks() {
+    public ResponseEntity<List<UserViewModel>> getAllUsers() {
         List<UserViewModel> users = userDataService.getAll();
         return ResponseEntity.ok().body(users);
     }
@@ -32,5 +29,13 @@ public class UserDataController {
     @RequestMapping(value = "/accountId/{id}",method = RequestMethod.GET)
     public ResponseEntity<UserViewModel> getUserByAccountId(@PathVariable Long id) {
         return ResponseEntity.ok(userDataService.getUserByAccountId(id));
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<UserViewModel> createUser(@RequestBody UserViewModel user ) {
+        if (user != null) {
+            return ResponseEntity.ok(userDataService.createUser(user));
+        }
+        return ResponseEntity.noContent().build();
     }
 }

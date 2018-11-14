@@ -40,4 +40,10 @@ public class UserDataServiceImpl implements UserDataService {
     public void deleteUser(long id) {
 
     }
+
+    @Override
+    public UserViewModel createUser(UserViewModel user) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/backend/users", user, UserViewModel.class).getBody();
+    }
 }

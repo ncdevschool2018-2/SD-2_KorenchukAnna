@@ -24,13 +24,23 @@ public class TaskDataServiceImpl implements TaskDataService {
     }
 
 
-
-
     @Override
     public TaskViewModel getTaskByTaskCode(String taskCode) {
         RestTemplate restTemplate = new RestTemplate();
         TaskViewModel task = restTemplate.getForObject(backendServerUrl + "/backend/tasks/"+taskCode,TaskViewModel.class);
         return task;
+    }
+
+    @Override
+    public TaskViewModel createTask(TaskViewModel task) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/backend/tasks", task, TaskViewModel.class).getBody();
+    }
+
+    @Override
+    public long getCountOfTaskByProjectCode(String projectCode) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "/backend/tasks/count/"+projectCode, Long.class);
     }
 
     @Override

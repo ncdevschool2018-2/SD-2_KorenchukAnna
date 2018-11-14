@@ -10,5 +10,6 @@ public interface UserDataService {
     UserViewModel getUserById(long id);
     UserViewModel getUserByAccountId(long id);
     void deleteUser(long id);
+    UserViewModel createUser(UserViewModel user);
 
 }

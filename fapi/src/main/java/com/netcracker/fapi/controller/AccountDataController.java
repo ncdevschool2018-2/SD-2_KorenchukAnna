@@ -31,7 +31,7 @@ public class AccountDataController {
         if (account != null) {
             return ResponseEntity.ok(accountDataService.createAccount(account));
         }
-        return null;
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

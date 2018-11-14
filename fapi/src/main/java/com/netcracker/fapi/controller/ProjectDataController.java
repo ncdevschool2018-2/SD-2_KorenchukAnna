@@ -23,7 +23,7 @@ public class ProjectDataController {
         if (project != null) {
             return ResponseEntity.ok(projectDataService.createProject(project));
         }
-        return null;
+        return ResponseEntity.noContent().build();
     }
 
     @RequestMapping(method = RequestMethod.GET)

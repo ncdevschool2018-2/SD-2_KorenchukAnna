@@ -8,5 +8,7 @@ public interface TaskDataService {
 
     List<TaskViewModel> getAll();
     TaskViewModel getTaskByTaskCode(String taskCode);
+    TaskViewModel createTask(TaskViewModel task);
+    long getCountOfTaskByProjectCode(String projectCode);
     void deleteTask(Long id);
 }
