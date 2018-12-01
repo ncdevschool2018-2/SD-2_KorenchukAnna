@@ -9,4 +9,6 @@ import {AccountService} from "./service/account.service";
 })
 export class AppComponent {
   title = 'frontend';
+
+
 }

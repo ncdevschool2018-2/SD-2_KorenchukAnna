@@ -11,27 +11,34 @@ import { AccountComponent } from './account/account.component';
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import {MenuComponent} from "./menu/menu.component";
 
-import { AlertModule } from 'ngx-bootstrap';
+import {AlertModule, ButtonsModule} from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { RouterModule, Routes } from '@angular/router';
-import { TasktableComponent } from './tasktable/tasktable.component';
-import {TaskdescriptionComponent} from "./taskdescription/taskdescription.component";
+
+import {AuthorizationFormView} from "./view/authorization/authorization-form.view";
 import {CommentsComponent} from "./comments/comments.component";
 
-import {Globals} from './global';
-import {TasksView} from "./view/tasks/tasks.view";
-import {DescriptionView} from "./view/description/description.view";
-import {AuthorizationFormView} from "./view/authorization/authorization-form.view";
-import {ProjectsView} from "./view/projects/projects.view";
-import {ProjectsComponent} from "./table-for-projects/table-for-projects.component";
+import { TableForTaskComponent } from './table-for-tasks/table-for-task.component';
+import {TaskDescriptionComponent} from "./task-description/task-description.component";
+import {TableForTasksView} from "./view/tasks/table/table-for-tasks.view";
+import {TaskDescriptionView} from "./view/tasks/description/task-description.view";
+
+import {TableForProjectsView} from "./view/projects/table/table-for-projects.view";
+import {ProjectTableComponent} from "./table-for-projects/table-for-projects.component";
+import {ProjectDescriptionComponent} from "./project-description/project-description.component";
+import {ProjectDescriptionView} from "./view/projects/description/project-description.view";
+
+
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 const routes: Routes = [
   {path:'',component: AuthorizationFormView},
-  {path:'tasks',component: TasksView},
-  {path:'description/:taskCode',component:  DescriptionView},
-  {path:'projects',component: ProjectsView }
+  {path:'tasks',component:  TableForTasksView },
+  {path:'tasks/description/:taskCode',component:  TaskDescriptionView},
+  {path:'projects',component: TableForProjectsView },
+  {path:'projects/description/:projectCode',component:  ProjectDescriptionView},
 ]
 
 
@@ -40,14 +47,19 @@ const routes: Routes = [
     AppComponent,
     AccountComponent,
     MenuComponent,
-    TasktableComponent,
-    TaskdescriptionComponent,
     CommentsComponent,
     AuthorizationFormView,
-    TasksView,
-    DescriptionView,
-    ProjectsComponent,
-    ProjectsView
+
+    TableForTaskComponent,
+    TaskDescriptionComponent,
+    TableForTasksView ,
+    TaskDescriptionView,
+
+    ProjectTableComponent,
+    ProjectDescriptionComponent,
+    TableForProjectsView,
+    ProjectDescriptionView
+
   ],
   imports: [
     BrowserModule,
@@ -56,12 +68,13 @@ const routes: Routes = [
     Ng4LoadingSpinnerModule.forRoot(),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
+    ButtonsModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     RouterModule.forRoot(routes,{ enableTracing: true }),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
-  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

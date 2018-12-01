@@ -4,3 +4,8 @@ img {
   height: 50px;
   border-radius: 50%;
 }
+.menu {
+  display: block;
+  height: 50px;
+  margin-bottom: 20px;
+}

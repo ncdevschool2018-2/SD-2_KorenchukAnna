@@ -1,10 +1,9 @@
 import {Component} from "@angular/core";
 
-
 @Component({
   selector: 'projects',
-  templateUrl: './projects.view.html'
+  templateUrl: './table-for-projects.view.html'
 })
-export class ProjectsView {
+export class TableForProjectsView {
 
 }

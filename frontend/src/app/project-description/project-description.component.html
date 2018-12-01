@@ -1,0 +1,105 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+<div class="container">
+<div class="card" >
+  <div class="card-header">
+    {{project.code}}
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+
+      <div class="container ">
+        <div class="row">
+          <div class="col-sm-2">
+            <button class="btn btn-info" (click)="openModal(editProject)" type="button"> <i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+          </div>
+          <div class="col-sm-4">
+            <button class="btn btn-info" (click)="openModal(deleteProject)" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+          </div>
+        </div>
+
+        <br>
+
+
+
+        <div class="row">
+          <div class="col-sm-12">
+            <form class="form-horizontal" role="form">
+              <p class="line">  Author  </p>
+              <div class="form-group row">
+                <label  class="col-sm-3 col-form-label">Name: </label>
+                <div class="col-sm-5">
+                  <p  class="form-control-plaintext">{{project?.author?.name}} {{project?.author?.surname}}</p>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-3 col-form-label">Email: </label>
+                <div class="col-sm-5">
+                  <p  class="form-control-plaintext">{{project?.author?.email}}</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+          <form class="form-horizontal" role="form">
+            <p class="line">  Description </p>
+            <div class="form-group row">
+              <div class="form-group col-sm-12">
+                <textarea class="form-control"  rows="7" readonly >{{project?.summary}}</textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<ng-template #deleteProject>
+
+  <div class="modal-body text-center">
+    <p>Do you really want delete {{project.code}}-project?</p>
+    <button type="button" class="btn btn-default" (click)="delete(project.id)" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="closeModal()" >No</button>
+  </div>
+
+</ng-template>
+
+
+
+
+  <ng-template #editProject>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">  Edit {{project.code}} - project </h4>
+      <button type="button" class="close pull-right"
+              aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form class="form-horizontal" role="form">
+        <div class="form-group row">
+          <label  class="col-sm-4 col-form-label">Summary : </label>
+          <div class="col-sm-8">
+            <textarea class="form-control" maxlength="300" rows="5"   #summary="ngModel" [(ngModel)]='this.description' name="summary"
+                      required pattern="[\w\W\D\s]+" > </textarea>
+            <small class="text-danger" [hidden]=" summary.valid ">Project summary cannot be empty </small>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Cancel</button>
+      <button type="button" [disabled]=" summary.invalid "  class="btn btn-primary" (click)="updateProject()">Save</button>
+    </div>
+
+  </ng-template>

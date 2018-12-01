@@ -10,7 +10,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let project of projects" (click)="openProjectDescription()">
+        <tr *ngFor="let project of projects" (click)="openProjectDescription(project.code)">
           <td scope="row">{{project.code}}</td>
           <td>{{project.summary}}</td>
           <td>{{project.author.name}}  {{project.author.surname}}</td>
@@ -19,4 +19,16 @@
       </table>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-8 float-left">
+      <div role="status" aria-live="polite">
+        Showing  to 30 of {{this.countOfProjects}} projects
+      </div>
+    </div>
+    <div class="col-sm-4  float-right">
+        <pagination [totalItems]="12" [rotate]=true [maxSize]="3" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+
+
 </div>

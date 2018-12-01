@@ -5,9 +5,9 @@ import {User} from "./user";
 export class Task{
 
   id: number;
-  taskname: string;
-  description: string;
+  taskName: string;
   taskCode: string;
+  description: string;
   priority: Priority;
   status: Status;
   reporter: User;

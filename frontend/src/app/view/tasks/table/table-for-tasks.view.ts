@@ -3,8 +3,8 @@ import {Component} from "@angular/core";
 
 @Component({
   selector: 'tasks',
-  templateUrl: './tasks.view.html'
+  templateUrl: './table-for-tasks.view.html'
 })
-export class TasksView {
+export class TableForTasksView {
 
 }
