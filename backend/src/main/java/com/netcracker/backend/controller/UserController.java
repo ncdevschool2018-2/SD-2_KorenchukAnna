@@ -47,4 +47,10 @@ public class UserController {
         return  userService.createUser(account);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteUserById(@PathVariable(name="id") Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

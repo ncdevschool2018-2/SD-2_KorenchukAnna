@@ -10,7 +10,7 @@ public class StatusEntity {
     private String status;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -20,7 +20,7 @@ public class StatusEntity {
     }
 
     @Basic
-    @Column(name = "status", nullable = false, length = 45)
+    @Column(name = "status")
     public String getStatus() {
         return status;
     }

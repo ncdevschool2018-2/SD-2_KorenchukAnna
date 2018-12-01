@@ -12,7 +12,7 @@ public class CommentsEntity {
     private UsersEntity author;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class CommentsEntity {
     }
 
     @Basic
-    @Column(name = "comment", nullable = false, length = 45)
+    @Column(name = "comment")
     public String getComment() {
         return comment;
     }
@@ -32,7 +32,7 @@ public class CommentsEntity {
     }
 
     @Basic
-    @Column(name = "task_code", nullable = false, length = 45)
+    @Column(name = "task_code")
     public String getTaskCode() {
         return taskCode;
     }

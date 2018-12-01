@@ -43,6 +43,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void deleteRoleById(long id) {
-
+        roleRepository.deleteById(id);
     }
 }

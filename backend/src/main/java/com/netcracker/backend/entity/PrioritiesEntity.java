@@ -10,7 +10,7 @@ public class PrioritiesEntity {
     private String priority;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -20,7 +20,7 @@ public class PrioritiesEntity {
     }
 
     @Basic
-    @Column(name = "priority", nullable = false, length = 45)
+    @Column(name = "priority")
     public String getPriority() {
         return priority;
     }

@@ -14,7 +14,7 @@ public class UsersEntity {
     private long accountId;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = 45)
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -34,7 +34,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "surname", nullable = false, length = 45)
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -44,7 +44,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "email", nullable = false, length = 45)
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -54,7 +54,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "avatar", nullable = true, length = 45)
+    @Column(name = "avatar")
     public String getAvatar() {
         return avatar;
     }
@@ -64,7 +64,7 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "account_id", nullable = false)
+    @Column(name = "account_id")
     public long getAccountId() {
         return accountId;
     }

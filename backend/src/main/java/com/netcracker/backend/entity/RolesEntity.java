@@ -10,7 +10,7 @@ public class RolesEntity {
     private String role;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -20,7 +20,7 @@ public class RolesEntity {
     }
 
     @Basic
-    @Column(name = "role", nullable = false, length = 45)
+    @Column(name = "role")
     public String getRole() {
         return role;
     }

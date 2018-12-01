@@ -3,6 +3,7 @@ package com.netcracker.backend.controller;
 import com.netcracker.backend.entity.TasksEntity;
 import com.netcracker.backend.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Iterable<TasksEntity> getAllTask() {
-        return taskService.getAllTasks();
+    public Iterable<TasksEntity> getAllTask(Pageable pageable) {
+        return taskService.getAllTasks(pageable).getContent();
     }
 
     @RequestMapping(value = "/{taskCode}", method = RequestMethod.GET)
@@ -42,4 +43,16 @@ public class TaskController {
     public TasksEntity createTask(@RequestBody TasksEntity task) {
         return  taskService.createTask(task);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteTaskById(@PathVariable(name="id") Long id) {
+        taskService.deleteTask(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public TasksEntity updateTask(@RequestBody TasksEntity task) {
+        return  taskService.updateTask(task);
+    }
+
 }

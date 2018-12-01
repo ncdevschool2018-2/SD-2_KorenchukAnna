@@ -31,8 +31,6 @@ public class StatusServiceImpl implements StatusService {
     }
 
 
-
-
     @Override
     public StatusEntity createStatus(StatusEntity status) {
         return null;
@@ -45,6 +43,6 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public void deleteStatusById(long id) {
-
+        statusRepository.deleteById(id);
     }
 }

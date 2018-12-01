@@ -8,21 +8,21 @@ import java.util.Objects;
 @Table(name = "tasks", schema = "management", catalog = "")
 public class TasksEntity {
     private long id;
-    private String taskname;
-    private String description;
+    private String taskName;
     private String taskCode;
+    private String description;
     private String projectCode;
-    private Date created;
-    private Date updated;
     private Date dueDate;
-    private double estimation;
-    private PrioritiesEntity priority;
+    private Date updated;
+    private Date created;
+    private Integer estimation;
     private StatusEntity status;
+    private PrioritiesEntity priority;
     private UsersEntity reporter;
     private UsersEntity assignee;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -32,27 +32,7 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "taskname", nullable = false, length = 45)
-    public String getTaskname() {
-        return taskname;
-    }
-
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
-    }
-
-    @Basic
-    @Column(name = "description", nullable = false, length = 45)
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Basic
-    @Column(name = "task_code", nullable = false, length = 45)
+    @Column(name = "task_code")
     public String getTaskCode() {
         return taskCode;
     }
@@ -62,7 +42,27 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "project_code", nullable = false, length = 45)
+    @Column(name = "task_name")
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Basic
+    @Column(name = "project_code")
     public String getProjectCode() {
         return projectCode;
     }
@@ -72,27 +72,7 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "created", nullable = false)
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    @Basic
-    @Column(name = "updated", nullable = true)
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
-    @Basic
-    @Column(name = "due_date", nullable = false)
+    @Column(name = "due_date")
     public Date getDueDate() {
         return dueDate;
     }
@@ -102,12 +82,32 @@ public class TasksEntity {
     }
 
     @Basic
-    @Column(name = "estimation", nullable = false, precision = 0)
-    public double getEstimation() {
+    @Column(name = "updated")
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    @Basic
+    @Column(name = "created")
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    @Basic
+    @Column(name = "estimation")
+    public Integer getEstimation() {
         return estimation;
     }
 
-    public void setEstimation(double estimation) {
+    public void setEstimation(Integer estimation) {
         this.estimation = estimation;
     }
 
@@ -117,29 +117,19 @@ public class TasksEntity {
         if (o == null || getClass() != o.getClass()) return false;
         TasksEntity that = (TasksEntity) o;
         return id == that.id &&
-                Double.compare(that.estimation, estimation) == 0 &&
-                Objects.equals(taskname, that.taskname) &&
-                Objects.equals(description, that.description) &&
                 Objects.equals(taskCode, that.taskCode) &&
+                Objects.equals(taskName, that.taskName) &&
+                Objects.equals(description, that.description) &&
                 Objects.equals(projectCode, that.projectCode) &&
-                Objects.equals(created, that.created) &&
+                Objects.equals(dueDate, that.dueDate) &&
                 Objects.equals(updated, that.updated) &&
-                Objects.equals(dueDate, that.dueDate);
+                Objects.equals(created, that.created) &&
+                Objects.equals(estimation, that.estimation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, taskname, description, taskCode, projectCode, created, updated, dueDate, estimation);
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "priority_id", referencedColumnName = "id", nullable = false)
-    public PrioritiesEntity getPriority() {
-        return priority;
-    }
-
-    public void setPriority(PrioritiesEntity priority) {
-        this.priority = priority;
+        return Objects.hash(id, taskCode, taskName, description, projectCode, dueDate, updated, created, estimation);
     }
 
     @ManyToOne
@@ -150,6 +140,16 @@ public class TasksEntity {
 
     public void setStatus(StatusEntity status) {
         this.status = status;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "priority_id", referencedColumnName = "id", nullable = false)
+    public PrioritiesEntity getPriority() {
+        return priority;
+    }
+
+    public void setPriority(PrioritiesEntity priority) {
+        this.priority = priority;
     }
 
     @ManyToOne

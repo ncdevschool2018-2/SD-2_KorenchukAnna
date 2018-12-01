@@ -1,13 +1,18 @@
 package com.netcracker.backend.service;
 
 import com.netcracker.backend.entity.ProjectsEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.Optional;
 
 public interface ProjectService {
 
     ProjectsEntity createProject(ProjectsEntity user);
-    Iterable<ProjectsEntity> getAllProjects();
+    Page<ProjectsEntity> getAllProjects(Pageable pageable);
+    Optional<ProjectsEntity> getProjectByProjectCode(String projectCode);
     Iterable<ProjectsEntity> getProjectsByAuthorId(long id);
-    ProjectsEntity updateProject(ProjectsEntity user);
+    ProjectsEntity updateProject(ProjectsEntity project);
     void deleteProjectById(long id);
 
 }

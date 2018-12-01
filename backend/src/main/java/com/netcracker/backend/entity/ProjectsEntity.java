@@ -12,7 +12,7 @@ public class ProjectsEntity {
     private UsersEntity author;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class ProjectsEntity {
     }
 
     @Basic
-    @Column(name = "code", nullable = false, length = 45)
+    @Column(name = "code")
     public String getCode() {
         return code;
     }
@@ -32,7 +32,7 @@ public class ProjectsEntity {
     }
 
     @Basic
-    @Column(name = "summary", nullable = false, length = 45)
+    @Column(name = "summary")
     public String getSummary() {
         return summary;
     }

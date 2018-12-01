@@ -12,7 +12,7 @@ public class AccountsEntity {
     private RolesEntity role;
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class AccountsEntity {
     }
 
     @Basic
-    @Column(name = "login", nullable = false, length = 45)
+    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -32,7 +32,7 @@ public class AccountsEntity {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = 45)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }

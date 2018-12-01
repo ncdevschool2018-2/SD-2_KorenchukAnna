@@ -42,8 +42,9 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 
+    @Override
     public AccountsEntity updateAccount(AccountsEntity user) {
-        return null;
+        return accountRepository.save(user);
     }
 
     public void deleteAccountById(long id) {

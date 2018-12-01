@@ -4,6 +4,8 @@ import com.netcracker.backend.entity.TasksEntity;
 import com.netcracker.backend.repository.TaskRepository;
 import com.netcracker.backend.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -26,8 +28,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Iterable<TasksEntity> getAllTasks() {
-        Iterable<TasksEntity> tasks = taskRepository.findAll();
+    public Page<TasksEntity> getAllTasks(Pageable pageable) {
+        Page<TasksEntity> tasks = taskRepository.findAll(pageable);
         return tasks;
     }
 
@@ -50,11 +52,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TasksEntity updateTask(TasksEntity task) {
-        return null;
+        return taskRepository.save(task);
     }
 
     @Override
     public void deleteTask(long id) {
-
+        taskRepository.deleteById(id);
     }
 }
