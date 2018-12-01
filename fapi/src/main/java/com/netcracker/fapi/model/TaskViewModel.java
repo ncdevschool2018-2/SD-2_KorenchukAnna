@@ -6,37 +6,38 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class TaskViewModel {
 
     private long id;
-    private String taskname;
-    private String description;
+    private String taskName;
     private String taskCode;
+    private String description;
     private String projectCode;
-    private String created;
-    private String updated;
     private String dueDate;
+    private String updated;
+    private String created;
     private double estimation;
-    private PriorityViewModel priority;
     private StatusViewModel status;
+    private PriorityViewModel priority;
     private UserViewModel reporter;
     private UserViewModel assignee;
 
     public TaskViewModel() {
     }
 
-    public TaskViewModel(long id, String taskname, String description, String taskCode, String projectCode, String created, String updated, String dueDate, double estimation, PriorityViewModel priority, StatusViewModel status, UserViewModel reporter, UserViewModel assignee) {
+    public TaskViewModel(long id, String taskName, String taskCode, String description, String projectCode, String dueDate, String updated, String created, double estimation, StatusViewModel status, PriorityViewModel priority, UserViewModel reporter, UserViewModel assignee) {
         this.id = id;
-        this.taskname = taskname;
-        this.description = description;
+        this.taskName = taskName;
         this.taskCode = taskCode;
+        this.description = description;
         this.projectCode = projectCode;
-        this.created = created;
-        this.updated = updated;
         this.dueDate = dueDate;
+        this.updated = updated;
+        this.created = created;
         this.estimation = estimation;
-        this.priority = priority;
         this.status = status;
+        this.priority = priority;
         this.reporter = reporter;
         this.assignee = assignee;
     }
+
 
     public long getId() {
         return id;
@@ -46,12 +47,12 @@ public class TaskViewModel {
         this.id = id;
     }
 
-    public String getTaskname() {
-        return taskname;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     public String getDescription() {
@@ -142,20 +143,21 @@ public class TaskViewModel {
         this.assignee = assignee;
     }
 
+
     @Override
     public String toString() {
         return "TaskViewModel{" +
                 "id=" + id +
-                ", taskname='" + taskname + '\'' +
-                ", description='" + description + '\'' +
+                ", taskName='" + taskName + '\'' +
                 ", taskCode='" + taskCode + '\'' +
+                ", description='" + description + '\'' +
                 ", projectCode='" + projectCode + '\'' +
-                ", created=" + created +
-                ", updated=" + updated +
-                ", dueDate=" + dueDate +
+                ", dueDate='" + dueDate + '\'' +
+                ", updated='" + updated + '\'' +
+                ", created='" + created + '\'' +
                 ", estimation=" + estimation +
-                ", priority=" + priority +
                 ", status=" + status +
+                ", priority=" + priority +
                 ", reporter=" + reporter +
                 ", assignee=" + assignee +
                 '}';

@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface TaskDataService {
 
-    List<TaskViewModel> getAll();
+    List<TaskViewModel> getAll(int page,int size);
     TaskViewModel getTaskByTaskCode(String taskCode);
     TaskViewModel createTask(TaskViewModel task);
     long getCountOfTaskByProjectCode(String projectCode);
+    void updateTask(TaskViewModel task);
     void deleteTask(Long id);
 }

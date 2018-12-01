@@ -39,6 +39,8 @@ public class AccountDataServiceImpl implements AccountDataService {
 
     @Override
     public AccountViewModel updateAccount(AccountViewModel account) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(backendServerUrl + "/backend/account", account, AccountViewModel.class);
         return null;
     }
 
@@ -46,6 +48,7 @@ public class AccountDataServiceImpl implements AccountDataService {
     public void deleteAccount(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/backend/account/" + id);
-
     }
+
+
 }

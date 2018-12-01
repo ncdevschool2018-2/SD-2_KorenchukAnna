@@ -22,16 +22,36 @@ public class ProjectDataServiceImpl implements ProjectDataService {
     }
 
     @Override
-    public List<ProjectViewModel> getAllProjects() {
+    public List<ProjectViewModel> getAllProjects(int page,int size) {
         RestTemplate restTemplate = new RestTemplate();
-        ProjectViewModel[] projects = restTemplate.getForObject(backendServerUrl + "/backend/projects/",ProjectViewModel[].class);
+        ProjectViewModel[] projects = restTemplate.getForObject(backendServerUrl + "/backend/projects?"+"page="+page+"&&"+"size="+size,ProjectViewModel[].class);
         return Arrays.asList(projects);
     }
 
     @Override
+    public ProjectViewModel getProjectByProjectCode(String code) {
+        RestTemplate restTemplate = new RestTemplate();
+        ProjectViewModel project = restTemplate.getForObject(backendServerUrl + "/backend/projects/projectCode/"+code, ProjectViewModel.class);
+        return project;
+    }
+
+    @Override
+    public void updateProject(ProjectViewModel project) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(backendServerUrl + "/backend/projects",project);
+    }
+
+    @Override
+    public void deleteProject(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/backend/projects/" + id);
+    }
+
+
+    @Override
     public List<ProjectViewModel> getProjectsByAuthorId(long id) {
         RestTemplate restTemplate = new RestTemplate();
-        ProjectViewModel[] projects = restTemplate.getForObject(backendServerUrl + "/backend/projects/"+id,ProjectViewModel[].class);
+        ProjectViewModel[] projects = restTemplate.getForObject(backendServerUrl + "/backend/projects/authorId/"+id,ProjectViewModel[].class);
         return Arrays.asList(projects);
     }
 }

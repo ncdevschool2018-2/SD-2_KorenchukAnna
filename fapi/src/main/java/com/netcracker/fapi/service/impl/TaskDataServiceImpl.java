@@ -16,10 +16,9 @@ public class TaskDataServiceImpl implements TaskDataService {
     private String backendServerUrl;
 
     @Override
-    public List<TaskViewModel> getAll() {
-
+    public List<TaskViewModel> getAll(int page,int size) {
         RestTemplate restTemplate = new RestTemplate();
-        TaskViewModel[] tasks = restTemplate.getForObject(backendServerUrl + "/backend/tasks/",TaskViewModel[].class);
+        TaskViewModel[] tasks = restTemplate.getForObject(backendServerUrl + "/backend/tasks?"+"page="+page+"&&"+"size="+size,TaskViewModel[].class);
         return Arrays.asList(tasks);
     }
 
@@ -34,7 +33,9 @@ public class TaskDataServiceImpl implements TaskDataService {
     @Override
     public TaskViewModel createTask(TaskViewModel task) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/backend/tasks", task, TaskViewModel.class).getBody();
+        TaskViewModel ts = restTemplate.postForEntity(backendServerUrl + "/backend/tasks", task, TaskViewModel.class).getBody();
+        System.out.print(ts);
+        return ts;
     }
 
     @Override
@@ -44,7 +45,14 @@ public class TaskDataServiceImpl implements TaskDataService {
     }
 
     @Override
-    public void deleteTask(Long id) {
+    public void updateTask(TaskViewModel task) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.put(backendServerUrl + "/backend/tasks",task);
+    }
 
+    @Override
+    public void deleteTask(Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "/backend/tasks/" + id);
     }
 }

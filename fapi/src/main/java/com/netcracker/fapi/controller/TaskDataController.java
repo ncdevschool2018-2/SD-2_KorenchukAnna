@@ -15,9 +15,9 @@ public class TaskDataController {
     @Autowired
     private TaskDataService taskDataService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<TaskViewModel>> getAllTasks() {
-        List<TaskViewModel> tasks = taskDataService.getAll();
+    @RequestMapping(value = "", params = {"page","size"},method = RequestMethod.GET)
+    public ResponseEntity<List<TaskViewModel>> getAllTasks(@RequestParam("page") int page,@RequestParam("size")int size) {
+        List<TaskViewModel> tasks = taskDataService.getAll(page,size);
         return ResponseEntity.ok().body(tasks);
     }
 
@@ -35,6 +35,21 @@ public class TaskDataController {
     public ResponseEntity<TaskViewModel> createTask(@RequestBody TaskViewModel task ) {
         if (task != null) {
             return ResponseEntity.ok(taskDataService.createTask(task));
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity deleteTask(@PathVariable long id) {
+        taskDataService.deleteTask(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<TaskViewModel> updateTask(@RequestBody TaskViewModel task) {
+        if (task != null) {
+            taskDataService.updateTask(task);
+            return ResponseEntity.ok().build();
         }
         return ResponseEntity.noContent().build();
     }
